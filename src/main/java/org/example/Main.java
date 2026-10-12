@@ -30,5 +30,7 @@ public class Main {
             HTTPManager.InserisciRichiesta(req);
         }
         HTTPManager.PrintReport();
+        HTTPManager.PrintLast10Requests(true);
+        HTTPManager.PrintRequests(false);
     }
 }

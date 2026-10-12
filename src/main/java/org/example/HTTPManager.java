@@ -55,4 +55,16 @@ public class HTTPManager {
         Long perc90 = Percentile90();
         println("=> Il percentile 90 è corrispondente a " + perc90 + "ms");
     }
+
+    public static void PrintRequests(Boolean brief) {
+        for (RichiestaHTTP r : richieste) {
+            println(brief ? r.brief() : r);
+        }
+    }
+
+    public static void PrintLast10Requests(Boolean brief) {
+        for (RichiestaHTTP r : ultime10) {
+            println(brief ? r.brief() : r);
+        }
+    }
 }
