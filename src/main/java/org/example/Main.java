@@ -10,7 +10,7 @@ public class Main{
         } catch (SaldoInsufficienteException e) {
             println(e.getMessage());
         } finally {
-            println(cb.getSaldo());
+            println("Saldo attuale: " + cb.getSaldo() + "EUR");
         }
 
         // ImportoNonValidoException (unchecked)
@@ -20,7 +20,17 @@ public class Main{
             println(e.getMessage());
         }
 
-        // importo valido
         cb.Preleva(20.00);
+
+        /* String input = "";
+        try {
+            input = readln("Inserisci importo da prelevare: ");
+            Double value = Double.parseDouble(input);
+            cb.Preleva(value);
+        } catch (NumberFormatException e) {
+            println("Valore numerico non valido: " + input);
+        } catch (Exception e) {
+            println(e.getMessage());
+        } */
     }
 }

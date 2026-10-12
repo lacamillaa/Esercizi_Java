@@ -14,10 +14,11 @@ public class ContoBancario {
     }
 
     public void Preleva(Double prelievo) throws SaldoInsufficienteException {
+        println("Prelievo di " + prelievo + "EUR in corso...");
         if (prelievo <= 0) {
             throw new ImportoNonValidoException(prelievo);
         }
-        if (prelievo < Saldo) {
+        if (Saldo < prelievo) {
             throw new SaldoInsufficienteException(prelievo, Saldo);
         }
         Saldo -= prelievo;
