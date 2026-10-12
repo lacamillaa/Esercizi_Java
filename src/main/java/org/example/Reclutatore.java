@@ -13,11 +13,15 @@ public class Reclutatore {
         Difficolta = difficolta;
     }
 
-    public void GeneraEroe() {
+    public void GeneraEroe() throws EroeNonIdoneoException {
         Faker gen = new Faker();
         var supereroe = gen.superhero();
         String nome = supereroe.name();
         Integer power = new Random().nextInt(0, 101);
+        println("Stiamo reclutando " + nome + " (potenza " + power + ")!");
+        if (power < Difficolta) {
+            throw new EroeNonIdoneoException(nome, Difficolta, power);
+        }
         println(nome + "(potenza " + power + ") è pronto per salvare il mondo!");
     }
 }
