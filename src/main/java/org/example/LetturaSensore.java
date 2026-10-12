@@ -77,5 +77,6 @@ public class LetturaSensore {
             }
         }
         if (fieldsFound == 0) return Optional.empty();
+        return Optional.of(ls);
     }
 }
