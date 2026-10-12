@@ -76,7 +76,7 @@ public class LetturaSensore {
                         break;
                 }
             } catch (NumberFormatException e) {
-                println("[ERRORE] " + e.getMessage());
+                println("[ERRORE] Valore numerico non valido: " + e.getMessage());
             }
         }
         if (fieldsFound == 0) return Optional.empty();
