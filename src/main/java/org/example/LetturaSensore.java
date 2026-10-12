@@ -38,7 +38,7 @@ public class LetturaSensore {
         LetturaSensore ls = new LetturaSensore(null, null,
                 null, null);
         String[] fields = raw.split(";");
-        Boolean fieldsFound = false;
+        Integer fieldsFound = 0;
         for (String field : fields) {
             // dividi in chiave e valore
             Integer splitPos = field.indexOf("=");
@@ -52,18 +52,22 @@ public class LetturaSensore {
                     case "temp":
                         Double _d = Double.parseDouble(value);
                         ls.setTemperatura(_d);
+                        fieldsFound++;
                         break;
                     case "umid":
                         Integer _i = Integer.parseInt(value);
                         ls.setUmiditaPercentuale(_i);
+                        fieldsFound++;
                         break;
                     case "ts":
                         Long _l = Long.parseLong(value);
                         ls.setTimestampUnix(_l);
+                        fieldsFound++;
                         break;
                     case "batt_low":
                         Boolean _b = Boolean.parseBoolean(value);
                         ls.setBatteriaScarica(_b);
+                        fieldsFound++;
                         break;
                     default:
                         break;
@@ -72,5 +76,6 @@ public class LetturaSensore {
                 println("[ERRORE] " + e.getMessage());
             }
         }
+        if (fieldsFound == 0) return Optional.empty();
     }
 }
