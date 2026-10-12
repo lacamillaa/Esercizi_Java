@@ -16,6 +16,8 @@ public class Main {
                 "temp=56;ts=342647589321",
                 "umid=244;ts=251535453;temp=11",
         };
+        Double sommaTemp = 0.0;
+        int nTemp = 0;
         for (String pacchetto : pacchetti) {
             try {
                 Optional<LetturaSensore> ls = LetturaSensore.ParsePacchetto(pacchetto);
@@ -23,11 +25,22 @@ public class Main {
                     println("[WARNING] Impossibile leggere pacchetto: " + pacchetto);
                 }
                 else {
+                    LetturaSensore lettura = ls.get();
                     println(ls.get());
+                    if (lettura.getTemperatura() != null) {
+                        sommaTemp += lettura.getTemperatura();
+                        nTemp++;
+                    }
                 }
             } catch (LetturaInvalidaException e) {
                 println(e.getMessage());
             }
+        }
+        if (nTemp != 0) {
+            println("Media delle temperature: " + (sommaTemp / nTemp));
+        }
+        else {
+            println("[WARNING] Nessuna temperatura registrata");
         }
     }
 }
