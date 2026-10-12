@@ -1,6 +1,8 @@
 package org.example;
 
 import static java.lang.IO.*;
+
+import java.util.*;
 import java.util.Optional;
 
 public class LetturaSensore {
@@ -81,5 +83,23 @@ public class LetturaSensore {
         }
         if (fieldsFound == 0) return Optional.empty();
         return Optional.of(ls);
+    }
+
+    @Override
+    public String toString() {
+        String res = "[" + (this.hashCode()) + "] ";
+        if (this.temperatura != null) {
+            res += ("\n\tTemperatura: " + this.temperatura);
+        }
+        if (this.umiditaPercentuale != null) {
+            res += ("\n\tUmidità: " + this.umiditaPercentuale + "%");
+        }
+        if (this.timestampUnix != null) {
+            res += ("\n\tTimestamp: " + new Date());
+        }
+        if (this.batteriaScarica != null) {
+            res += ("\n\tBatteria scarica: " + (this.batteriaScarica ? "SI" : "NO"));
+        }
+        return res;
     }
 }

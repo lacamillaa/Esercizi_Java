@@ -22,6 +22,9 @@ public class Main {
                 if (ls.isEmpty()) {
                     println("[WARNING] Impossibile leggere pacchetto: " + pacchetto);
                 }
+                else {
+                    println(ls.get());
+                }
             } catch (LetturaInvalidaException e) {
                 println(e.getMessage());
             }
