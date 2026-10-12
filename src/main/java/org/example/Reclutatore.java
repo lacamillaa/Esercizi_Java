@@ -22,6 +22,6 @@ public class Reclutatore {
         if (power < Difficolta) {
             throw new EroeNonIdoneoException(nome, Difficolta, power);
         }
-        println(nome + "(potenza " + power + ") è pronto per salvare il mondo!");
+        println(nome + " (potenza " + power + ") è pronto per salvare il mondo!");
     }
 }
