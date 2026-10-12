@@ -14,6 +14,9 @@ public class ContoBancario {
     }
 
     public void Preleva(Double prelievo) throws SaldoInsufficienteException {
+        if (prelievo <= 0) {
+            throw new ImportoNonValidoException(prelievo);
+        }
         if (prelievo < Saldo) {
             throw new SaldoInsufficienteException(prelievo, Saldo);
         }
