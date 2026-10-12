@@ -32,7 +32,7 @@ public class LetturaSensore {
         this.batteriaScarica = batteriaScarica;
     }
 
-    public static Optional<LetturaSensore> ParsePacchetto(String raw) {
+    public static Optional<LetturaSensore> ParsePacchetto(String raw) throws LetturaInvalidaException {
         // esegui il parsing di tutti i campi
         // se nessun campo è stato individuato, restituisci null
         LetturaSensore ls = new LetturaSensore(null, null,
@@ -50,22 +50,25 @@ public class LetturaSensore {
             try {
                 switch (key) {
                     case "temp":
-                        Double _d = Double.parseDouble(value);
+                        double _d = Double.parseDouble(value);
                         ls.setTemperatura(_d);
                         fieldsFound++;
                         break;
                     case "umid":
-                        Integer _i = Integer.parseInt(value);
+                        int _i = Integer.parseInt(value);
+                        if (_i < 0 || _i > 100) {
+                            throw new LetturaInvalidaException(_i);
+                        }
                         ls.setUmiditaPercentuale(_i);
                         fieldsFound++;
                         break;
                     case "ts":
-                        Long _l = Long.parseLong(value);
+                        long _l = Long.parseLong(value);
                         ls.setTimestampUnix(_l);
                         fieldsFound++;
                         break;
                     case "batt_low":
-                        Boolean _b = Boolean.parseBoolean(value);
+                        boolean _b = Boolean.parseBoolean(value);
                         ls.setBatteriaScarica(_b);
                         fieldsFound++;
                         break;
