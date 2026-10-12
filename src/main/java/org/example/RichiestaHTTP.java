@@ -64,4 +64,11 @@ public class RichiestaHTTP {
                 + "\n\tTimestamp: " + new Date(this.getTimestamp());
         return res;
     }
+
+    public String brief() {
+        String res = "[" + this.hashCode() + "] " + IP + " " + path + statusCode
+                + (CodeMap.getOrDefault(statusCode, "") + " ")
+                + "(" + tempoRispostaMs + "ms)";
+        return res;
+    }
 }

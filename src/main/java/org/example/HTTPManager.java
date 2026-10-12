@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.*;
 
+import static java.lang.IO.print;
 import static java.lang.IO.println;
 
 public class HTTPManager {
@@ -40,5 +41,18 @@ public class HTTPManager {
             it.next();
         }
         return it.hasNext() ? it.next() : null;
+    }
+
+    public static void PrintReport() {
+        println("=> IP sospetti: ");
+        for (String ip : ipSospetti) {
+            println("\t" + ip);
+        }
+        println("=> Ultime 10 richieste: ");
+        for (RichiestaHTTP richiesta : ultime10) {
+            println("\t" + richiesta.brief());
+        }
+        Long perc90 = Percentile90();
+        println("=> Il percentile 90 è corrispondente a " + perc90 + "ms");
     }
 }
