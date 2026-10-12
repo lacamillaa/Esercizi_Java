@@ -9,7 +9,7 @@ public class RichiestaHTTP {
     private Long tempoRispostaMs;
     private Long timestamp;
 
-    private static Map<Integer, String> CodeMap = Map.ofEntries(
+    public static Map<Integer, String> CodeMap = Map.ofEntries(
             Map.entry(200, "OK"),
             Map.entry(201, "CREATED"),
             Map.entry(204, "NO CONTENT"),
