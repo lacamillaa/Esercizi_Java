@@ -66,9 +66,9 @@ public class RichiestaHTTP {
     }
 
     public String brief() {
-        String res = "[" + this.hashCode() + "] " + IP + " " + path + statusCode
-                + (CodeMap.getOrDefault(statusCode, "") + " ")
-                + "(" + tempoRispostaMs + "ms)";
+        String res = "[" + this.hashCode() + "] " + IP + " " + path + " " + statusCode
+                + " " + CodeMap.getOrDefault(statusCode, "")
+                + " (" + tempoRispostaMs + "ms)" + " - " + new Date(timestamp);
         return res;
     }
 }
