@@ -18,6 +18,22 @@ public class LetturaSensore {
         this.batteriaScarica = batteriaScarica;
     }
 
+    public Double getTemperatura() {
+        return temperatura;
+    }
+
+    public Integer getUmiditaPercentuale() {
+        return umiditaPercentuale;
+    }
+
+    public Long getTimestampUnix() {
+        return timestampUnix;
+    }
+
+    public Boolean getBatteriaScarica() {
+        return batteriaScarica;
+    }
+
     public void setTemperatura(Double temperatura) {
         this.temperatura = temperatura;
     }
